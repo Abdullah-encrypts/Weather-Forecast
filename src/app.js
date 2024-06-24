@@ -1,5 +1,5 @@
-const geocode = require("/src/utils/geocode");
-const forecast = require("src/utils/forecast");
+const geocode = require("./utils/geocode.js");
+const forecast = require("./utils/forecast.js");
 
 const path = require("path");
 const express = require("express");
@@ -54,33 +54,25 @@ app.get("/weather", (req, res) => {
       error: "User must provide the address!",
     });
   }
-    // Adding geocode code
 
-    geocode(input, (error, { longitude, latitude, location } = {}) => {
-      if (input.length === 0) {
-        return console.log(
-          "Please enter a valid location name in front of the command."
-        );
-      }
+  geocode(req.query.address, (error, { latitude, longitude, location }) => {
+    if (error) {
+      return res.send(error);
+    }
+
+    forecast(latitude, longitude, (error, forecastData) => {
       if (error) {
-        return console.log(error);
+        return res.send(error);
       }
-      forecast(longitude, latitude, (error, forecastData) => {
-        if (error) {
-          return console.log(error);
-        }
-        console.log(location);
-        console.log(forecastData);
+
+      res.send({
+        forecast: forecastData,
+        location,
+        address: req.query.address,
       });
     });
-
-    // new code is above
-  
-  res.send({
-    address: req.query.address,
-    forecast: "The weather is partly cloudy!",
-    location: "Philadelphia",
   });
+
 });
 
 app.get("/products", (req, res) => {
