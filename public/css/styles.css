@@ -45,12 +45,12 @@ header a {
 input {
     padding: 8px;
     border: solid #cccccc;
-    border-radius: 15px;
+    border-radius: 8px;
 }
 
 button {
     padding: 8px;
-    border-radius: 15px;
+    border-radius: 8px;
     color: white;
     border: solid #888888;
     background: #888888;

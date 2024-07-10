@@ -5,6 +5,8 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 
+const port = process.env.PORT || 3000;
+
 // setting paths
 const app = express();
 const publicDirectoryPath = path.join(__dirname, "../public");
@@ -21,7 +23,7 @@ app.use(express.static(publicDirectoryPath));
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Weather",
-    name: "Draven",
+    name: "Abdullah",
   });
 });
 
@@ -34,7 +36,7 @@ app.get("/about", (req, res) => {
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    message: "HELP MEEEEEEEEEEEEEEEEEEEEEEE I AM STUCK AS A CODER >>>>>>>>>>>>",
+    message: "HELP MEEEEEEEEEEEEE I AM A CODER >>>>>>>>>>>>",
     title: "Help",
     name: "Abdullah",
   });
@@ -95,6 +97,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("The server is up and running!");
+app.listen(port, () => {
+  console.log(`The server is up and running on port ${port}!`);
 });
