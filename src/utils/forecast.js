@@ -13,7 +13,7 @@ const forecast = (longitude, latitude, callback) => {
     } else {
       callback(
         undefined,
-        `The weather is ${body.current.weather_descriptions[0]}, the temperature is ${body.current.temperature}°C and feels like ${body.current.feelslike}°C.`
+        `The weather is ${body.current.weather_descriptions[0]}, the temperature is ${body.current.temperature}°C and feels like ${body.current.feelslike}°C.The humidity is around ${body.current.humidity}. The UV index is at ${body.current.uv_index}.`
       );
     }
   });

@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about", {
+    message: "This website is created by Muhammad Abdullah. The website uses map api for the geocodes and weatherstack api for the forecast data. ",
     title: "About me",
     name: "Abdullah",
   });
@@ -36,7 +37,7 @@ app.get("/about", (req, res) => {
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    message: "HELP MEEEEEEEEEEEEE I AM A CODER >>>>>>>>>>>>",
+    message: "This is the help page you are looking for. \n But How can I help you though? ",
     title: "Help",
     name: "Abdullah",
   });
